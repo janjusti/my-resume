@@ -1,0 +1,93 @@
+\usepackage{ifthen}
+\usepackage{listofitems}
+
+\newcommand{\multiLangString}[2]{%
+  \ifnum\currentLang=0
+    #1%
+  \else
+    #2%
+  \fi
+}
+
+\newcommand{\monthName}[1]{\ifnum\currentLang=0\ifnum#1=0 present\fi\ifnum#1=1 January\fi\ifnum#1=2 February\fi\ifnum#1=3 March\fi\ifnum#1=4 April\fi\ifnum#1=5 May\fi\ifnum#1=6 June\fi\ifnum#1=7 July\fi\ifnum#1=8 August\fi\ifnum#1=9 September\fi\ifnum#1=10 October\fi\ifnum#1=11 November\fi\ifnum#1=12 December\fi\else\ifnum#1=0 presente\fi\ifnum#1=1 Janeiro\fi\ifnum#1=2 Fevereiro\fi\ifnum#1=3 Março\fi\ifnum#1=4 Abril\fi\ifnum#1=5 Maio\fi\ifnum#1=6 Junho\fi\ifnum#1=7 Julho\fi\ifnum#1=8 Agosto\fi\ifnum#1=9 Setembro\fi\ifnum#1=10 Outubro\fi\ifnum#1=11 Novembro\fi\ifnum#1=12 Dezembro\fi\fi}
+
+
+\setsepchar{,}
+\newcommand{\checktags}[2]{%
+    \readlist\topictags{#1}%
+    \def\texttorender{\empty}%
+    \foreachitem\renderedtag\in\renderedtags{%
+        \foreachitem\topictag\in\topictags{%
+            \ifx\renderedtag\topictag%
+                \def\texttorender{#2}%
+            \fi%
+        }%
+    }%
+    \texttorender%
+}
+
+\newcommand{\cvskilltxt}[3][]{%
+    \def\currvalue{}%
+    \ifnum#3<2%
+       \def\currvalue{\multiLangString{beginner}{básico}}%
+    \fi%
+    \ifnum#3=2%
+       \def\currvalue{\multiLangString{intermediate}{intermediário}}%
+    \fi%
+    \ifnum#3=3%
+       \def\currvalue{\multiLangString{advanced}{avançado}}%
+    \fi%
+    \ifnum#3>3%
+       \def\currvalue{\multiLangString{fluent}{fluente}}%
+    \fi%
+    % if #1 is empty, print anyway
+    % if #1 is not empty, apply checktags
+    \ifx&#1&%
+        #2\checktags{show-levels}{ (\currvalue)}%
+    \else%
+        \checktags{#1}{%
+            #2\checktags{show-levels}{ (\currvalue)}%
+        }%
+    \fi%
+    % #2\checktags{show-levels}{ (\currvalue)}%
+}
+
+% \newcommand{\cvtopic}[3]{
+%     \checktags{#1}{
+%         \item \multiLangString{
+%             #2%
+%             }{
+%             #3%
+%         }\par%
+%     }
+% }
+
+\newcommand{\betweenDates}[0]{%
+    % \multiLangString{until }{até }%
+    - %
+}
+
+\newcommand{\smallObsv}[2]{%
+    \ifthenelse{\equal{\currentMode}{altacv}}{%
+        #1 {\small(#2)}%
+    }{%
+        #1, #2%
+    }
+}
+
+\newcommand{\inlineList}[1]{
+    \begin{enumerate*}[label={},afterlabel={},itemjoin={{, }},after=\unskip{.}]%
+        #1%
+    \end{enumerate*}%
+}
+
+% add \par after each \item
+\let\svitem\item
+\let\svitemize\itemize
+\let\svenditemize\enditemize%
+\renewenvironment{itemize}{%
+  \def\newitem{\par\svitem}\svitemize%
+  \def\item{\let\item\newitem\svitem}%
+}{%
+  \par\svenditemize%
+}

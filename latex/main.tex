@@ -1,0 +1,139 @@
+\documentclass[10pt,a4paper,ragged2e,withhyper]{\currentMode}
+
+\usepackage{ifthen}
+\usepackage{listofitems}
+
+\ifthenelse{\equal{\currentMode}{altacv}}{%
+    \geometry{left=1.5cm,right=1.5cm,top=2cm,bottom=2cm,columnsep=1cm}
+}{
+    \geometry{left=2cm,right=2cm,top=2cm,bottom=2cm,columnsep=1cm}
+}
+\usepackage{mymacros}
+
+\readlist\renderedtags{%
+    %%%%%%%% modes
+    data,%
+    infra,%
+    backend,%
+    % scrummaster,%
+    % invest,%
+    acad-projs,%
+    %%%%%%%% options
+    show-levels,%
+    impact,%
+}
+
+%%%%%%%%%%%%%%%
+
+% Change the font if you want to, depending on whether
+% you're using pdflatex or xelatex/lualatex
+\ifxetexorluatex
+  % If using xelatex or lualatex:
+  \ifthenelse{\equal{\currentMode}{altacv}}{
+    \setmainfont{Roboto Slab}
+    \setsansfont{Lato} 
+  }{
+    \defaultfontfeatures{LetterSpace=2}
+    \setmainfont{Arial}
+    \setsansfont{Arial}
+  }
+  \renewcommand{\familydefault}{\sfdefault}
+\else
+  % If using pdflatex:
+  \usepackage[rm]{roboto}
+  \usepackage[defaultsans]{lato}
+  % \usepackage{sourcesanspro}
+  \renewcommand{\familydefault}{\sfdefault}
+\fi
+
+% Change some fonts, if necessary
+\ifthenelse{\equal{\currentMode}{altacv}}{%
+    % \renewcommand{\namefont}{\LARGE\rmfamily\bfseries}
+    % \renewcommand{\personalinfofont}{\footnotesize}
+    % \renewcommand{\cvsectionfont}{\Large\rmfamily\bfseries}
+    % \renewcommand{\cvsubsectionfont}{\large\bfseries}
+    \definecolor{SlateGrey}{HTML}{2E2E2E}
+    \definecolor{LightGrey}{HTML}{666666}
+}{
+    % \renewcommand{\namefont}{\LARGE\bfseries}
+    % \renewcommand{\personalinfofont}{\bfseries}
+    % \renewcommand{\cvsectionfont}{\LARGE\bfseries\MakeUppercase}
+    % \renewcommand{\cvsubsectionfont}{\large\bfseries}
+    \definecolor{SlateGrey}{HTML}{000000}
+    \definecolor{LightGrey}{HTML}{000000}
+}
+
+% Change the colours if you want to
+\definecolor{DarkPastelRed}{HTML}{\multiLangString{552180}{214580}}
+\definecolor{PastelRed}{HTML}{\multiLangString{8136d1}{3062b3}}
+\definecolor{GoldenEarth}{HTML}{\multiLangString{9a8cad}{6676b0}}
+\colorlet{name}{black}
+\colorlet{tagline}{PastelRed}
+\colorlet{heading}{DarkPastelRed}
+\colorlet{headingrule}{GoldenEarth}
+\colorlet{subheading}{PastelRed}
+\colorlet{accent}{PastelRed}
+\colorlet{emphasis}{SlateGrey}
+\colorlet{body}{LightGrey}
+
+% Change the bullets for itemize and rating marker
+% for \cvskill if you want to
+\renewcommand{\itemmarker}{{\small\textbullet}}
+\renewcommand{\ratingmarker}{\faCircle}
+
+\begin{document}
+
+\name{\envFullName}
+\tagline{\envCurrentPosition}
+
+\def\personalinfoemail{\envEmail}
+\def\personalinfophone{\envPhoneNumber}
+\def\personalinfolocation{\envLocation}
+\def\personalinfolinkedin{janjusti}
+\def\personalinfogithub{janjusti}
+
+\personalinfo{%
+  \email{\personalinfoemail}
+  \phone{\personalinfophone}
+%   \mailaddress{Åddrésş, Street, 00000 Cóuntry}
+  \location{\personalinfolocation}
+%   \homepage{www.homepage.com}
+%   \twitter{@twitterhandle}
+  \linkedin{\personalinfolinkedin}
+  \github{\personalinfogithub}
+  %% You MUST add the academicons option to \documentclass, then compile with LuaLaTeX or XeLaTeX, if you want to use \orcid or other academicons commands.
+  % \orcid{0000-0000-0000-0000}
+  %% You can add your own arbtrary detail with
+  %% \printinfo{symbol}{detail}[optional hyperlink prefix]
+  % \printinfo{\faPaw}{Hey ho!}[https://example.com/]
+  %% Or you can declare your own field with
+  %% \NewInfoFiled{fieldname}{symbol}[optional hyperlink prefix] and use it:
+  % \NewInfoField{gitlab}{\faGitlab}[https://gitlab.com/]
+  % \gitlab{your_id}
+}
+\makecvheader
+
+%% Depending on your tastes, you may want to make fonts of itemize environments slightly smaller
+% \AtBeginEnvironment{itemize}{\small}
+
+\ifthenelse{\equal{\currentMode}{altacv}}{\medskip}{\bigskip}
+
+\begin{sloppypar}
+
+    \input{src/summary}
+    
+    \bigskip
+    
+    \input{src/skills}
+    
+    \bigskip
+    
+    \input{src/professional}
+    
+    \bigskip
+    
+    \input{src/education}
+
+\end{sloppypar}
+
+\end{document}

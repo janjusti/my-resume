@@ -1,0 +1,4 @@
+output/*
+latex/temp/*
+*.env
+!env-examples/*
