@@ -104,16 +104,26 @@
 \newcommand{\inlineList}[1]{%
     \begin{enumerate*}[%
         label={},afterlabel={},itemjoin={{, }},after=\unskip{.},%
-        leftmargin=0pt,itemindent=0pt,labelindent=0pt,labelsep=0pt]%
+        leftmargin=0pt,itemindent=0pt,labelindent=0pt,labelsep=0pt,%
+        topsep=0pt,parsep=0pt,partopsep=0pt]%
         #1%
     \end{enumerate*}%
 }
 
 \newcommand{\cvskillblock}[1]{%
-    \begin{justify}%
-    \noindent\ignorespaces
-    #1%
-    \end{justify}%
+    \ifthenelse{\equal{\currentMode}{altacv}}{%
+        \begingroup
+        \setlength{\parindent}{0pt}%
+        \justifying
+        \noindent\ignorespaces
+        #1\par
+        \endgroup
+    }{%
+        \begin{justify}%
+        \noindent\ignorespaces
+        #1%
+        \end{justify}%
+    }%
 }
 
 \newcommand{\cvproseblock}[1]{%
@@ -128,7 +138,11 @@
 % Tighter gap between skill subsection title and list (cvsubsection ends with \medskip).
 \newcommand{\cvskillsubsection}[1]{%
     \cvsubsection{#1}%
-    \vspace{\dimexpr-\medskipamount+0.25\baselineskip\relax}%
+    \ifthenelse{\equal{\currentMode}{altacv}}{%
+        \vspace{\dimexpr-\medskipamount+0.05\baselineskip\relax}%
+    }{%
+        \vspace{\dimexpr-\medskipamount+0.25\baselineskip\relax}%
+    }%
 }
 
 % add \par after each \item
