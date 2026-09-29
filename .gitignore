@@ -1,4 +1,6 @@
 output/*
+__pycache__/
+*.py[cod]
 latex/temp/*
 latex/temp*
 *.env
