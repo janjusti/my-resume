@@ -75,10 +75,25 @@
     }
 }
 
-\newcommand{\inlineList}[1]{
-    \begin{enumerate*}[label={},afterlabel={},itemjoin={{, }},after=\unskip{.}]%
+\newcommand{\inlineList}[1]{%
+    \begin{enumerate*}[%
+        label={},afterlabel={},itemjoin={{, }},after=\unskip{.},%
+        leftmargin=0pt,itemindent=0pt,labelindent=0pt,labelsep=0pt]%
         #1%
     \end{enumerate*}%
+}
+
+\newcommand{\cvskillblock}[1]{%
+    \begin{justify}%
+    \noindent
+    #1%
+    \end{justify}%
+}
+
+% Tighter gap between skill subsection title and list (cvsubsection ends with \medskip).
+\newcommand{\cvskillsubsection}[1]{%
+    \cvsubsection{#1}%
+    \vspace{\dimexpr-\medskipamount+0.25\baselineskip\relax}%
 }
 
 % add \par after each \item
