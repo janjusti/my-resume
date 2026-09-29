@@ -314,12 +314,17 @@
 %     {\cvsectionfont{#1}\par}
 %     \bigskip%
 % }
+\newcommand{\cvSectionBeforeHeader}{}
+\newcommand{\cvSectionAfterHeader}{}
+
 \newcommand{\cvsection}[2][]{%
+  \cvSectionBeforeHeader
   \bigskip%
   \ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
   {\cvsectionfont{#2}}\\[-1ex]%
   \par
   \bigskip
+  \cvSectionAfterHeader
 }
 
 \renewcommand{\href}[2]{#2}
@@ -334,10 +339,14 @@
 
 \newcommand{\exactGoogleURL}[1]{\href{https://www.google.com/search?q="#1"}{#1}}
 
+\newcommand{\cvEventBeforeHeader}{}
+\newcommand{\cvEventAfterHeader}{}
+
 % \newcommand{\cvevent}[4]{%
 %   #1
 % }
 \newcommand{\cvevent}[4]{%
+    \cvEventBeforeHeader
     {\cveventUpperFont#2} \\
     \smallskip%
     {\cveventLowerFont#1} \\
@@ -345,6 +354,7 @@
     {\cveventPeriodFont#3}%
     \medskip%
     \par\normalsize%
+    \cvEventAfterHeader
 }
 
 \newcommand{\cveventsummary}[1]{%
@@ -358,9 +368,7 @@
 %   #1
 % }
 \newcommand{\cvsubevent}[4]{%
-    % {\cvsubeventFont#1}%
-    % \par\smallskip%
-    % \par\normalsize%
+    % ATS: sub-role headers omitted; bullets stay under parent \cvevent.
 }
 
 

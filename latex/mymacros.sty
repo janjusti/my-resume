@@ -91,3 +91,43 @@
 }{%
   \par\svenditemize%
 }
+
+% --- Section / job header pagination (altacv + altacv-ats via hooks in .cls) ---
+\RequirePackage{needspace}
+
+\newlength{\cvEventNeedSpaceLen}
+\setlength{\cvEventNeedSpaceLen}{9\baselineskip}
+
+\newlength{\cvSectionLeadNeedSpaceLen}
+\setlength{\cvSectionLeadNeedSpaceLen}{5\baselineskip}
+
+\newcommand{\cvEventPaginationNeedSpace}{%
+  \Needspace{\cvEventNeedSpaceLen}%
+}
+
+\newcommand{\cvSectionPaginationNeedSpace}{%
+  \dimen0=\cvSectionLeadNeedSpaceLen
+  \advance\dimen0 by \cvEventNeedSpaceLen
+  \Needspace{\dimen0}%
+}
+
+\renewcommand{\cvSectionBeforeHeader}{%
+  \cvSectionPaginationNeedSpace
+  \begingroup
+  \raggedright
+}
+\renewcommand{\cvSectionAfterHeader}{%
+  \endgroup
+}
+
+\renewcommand{\cvEventBeforeHeader}{%
+  \cvEventPaginationNeedSpace
+  \begingroup
+  \raggedright
+}
+\renewcommand{\cvEventAfterHeader}{%
+  \endgroup
+}
+
+\clubpenalty=10000
+\widowpenalty=10000

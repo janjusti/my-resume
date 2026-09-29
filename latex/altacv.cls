@@ -305,11 +305,16 @@
 % }
 \newcommand{\cvsearchtag}[1]{\href{https://www.google.com/search?q=#1}{\textcolor{DarkPastelRed!70}{\textbf{#1}}}}
 
+\newcommand{\cvSectionBeforeHeader}{}
+\newcommand{\cvSectionAfterHeader}{}
+
 \newcommand{\cvsection}[2][]{%
+  \cvSectionBeforeHeader
   \bigskip%
   \ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
   {\color{heading}\cvsectionfont\MakeUppercase{#2}}\\[-1ex]%
   {\color{headingrule}\rule{\linewidth}{2pt}\par}\medskip
+  \cvSectionAfterHeader
 }
 
 \newcommand{\cvsubsection}[1]{%
@@ -319,7 +324,11 @@
 
 \newcommand{\exactGoogleURL}[1]{\href{https://www.google.com/search?q="#1"}{#1}}
 
+\newcommand{\cvEventBeforeHeader}{}
+\newcommand{\cvEventAfterHeader}{}
+
 \newcommand{\cvevent}[4]{%
+  \cvEventBeforeHeader
   \noindent
   {\large\color{emphasis}#1}%
   \ifstrequal{#3}{}{}{\hfill{\small\makebox[0.1\linewidth][r]{\faCalendar~#3}}}%
@@ -330,6 +339,7 @@
     \par\smallskip%
   }%
   \par\normalsize
+  \cvEventAfterHeader
 }
 \newcommand{\cveventsummary}[1]{%
     #1%
@@ -338,6 +348,7 @@
 
 
 \newcommand{\cvsubevent}[4]{%
+  \cvEventBeforeHeader
   \noindent
   {\color{emphasis}#1}%
   \ifstrequal{#3}{}{}{\hfill{\small\makebox[0.1\linewidth][r]{\faCalendar~#3}}}%
@@ -348,6 +359,7 @@
     \par\smallskip%
   }%
   \par\normalsize
+  \cvEventAfterHeader
 }
 
 
