@@ -83,7 +83,11 @@
 \begin{document}
 
 \name{\envFullName}
-\tagline{\envCurrentPosition}
+\ifthenelse{\equal{\currentMode}{altacv-ats}}{%
+    \tagline{\envAtsHeadline}%
+}{%
+    \tagline{\envCurrentPosition}%
+}
 
 \ifthenelse{\equal{\currentMode}{altacv-ats}}{%
     \hypersetup{%

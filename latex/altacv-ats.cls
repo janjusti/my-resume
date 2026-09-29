@@ -292,7 +292,6 @@
     \medskip
     \begingroup
         \normalfont\normalsize
-        \textbf{\multiLangString{Title}{Cargo}:}
         \@tagline\par
     \endgroup
     \medskip

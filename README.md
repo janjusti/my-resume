@@ -16,7 +16,10 @@ cp env-examples/.eng.env .eng.env
 cp env-examples/.ptbr.env .ptbr.env
 ```
 
-Use `\&` in `CURRENT_POSITION` when the title contains `&` (LaTeX).
+Use `\&` in `CURRENT_POSITION` or `ATS_HEADLINE` when the text contains `&` (LaTeX).
+
+- `CURRENT_POSITION`: tagline on the **visual** PDF (your current role).
+- `ATS_HEADLINE`: plain keyword line under your name on **ATS** PDFs only.
 
 2. Edit the CV under `latex/src/`.
 

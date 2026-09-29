@@ -2,8 +2,7 @@
 """
 Render CV LaTeX sources as plain text for copying into LinkedIn.
 
-Respects
-\\readlist\\renderedtags and \\checktags from latex/main.tex.
+Respects \\readlist\\renderedtags and \\checktags from latex/main.tex.
 """
 from __future__ import annotations
 
