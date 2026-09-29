@@ -288,10 +288,12 @@
 
 
 \newcommand{\makecvheader}{%
+    {\namefont\@name\par}%
+    \medskip
     \begingroup
-        \namefont{\@name}\par
-        \medskip
-        \taglinefont{\@tagline}\par
+        \normalfont\normalsize
+        \textbf{\multiLangString{Title}{Cargo}:}
+        \@tagline\par
     \endgroup
     \medskip
     \begingroup
@@ -351,9 +353,9 @@
 % }
 \newcommand{\cvevent}[4]{%
     \cvEventBeforeHeader
-    {\cveventUpperFont#2} \\
+    {\cveventUpperFont#1} \\
     \smallskip%
-    {\cveventLowerFont#1} \\
+    {\cveventLowerFont#2} \\
     \smallskip%
     {\cveventPeriodFont#3}%
     \ifstrequal{#4}{}{}{%

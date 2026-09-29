@@ -33,7 +33,6 @@
     \setmainfont{Roboto Slab}
     \setsansfont{Lato} 
   }{
-    \defaultfontfeatures{LetterSpace=2}
     \setmainfont{Arial}
     \setsansfont{Arial}
   }
@@ -85,6 +84,13 @@
 
 \name{\envFullName}
 \tagline{\envCurrentPosition}
+
+\ifthenelse{\equal{\currentMode}{altacv-ats}}{%
+    \hypersetup{%
+        pdftitle={\envFullName\ -- \envCurrentPosition},%
+        pdfauthor={\envFullName}%
+    }%
+}{}
 
 \def\personalinfoemail{\envEmail}
 \def\personalinfophone{\envPhoneNumber}

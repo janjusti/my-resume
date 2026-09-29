@@ -87,9 +87,9 @@
 }
 \newcommand{\cvcpuSpikeRange}[2]{%
     \ifnum\currentLang=0
-        \ifthenelse{\equal{\currentMode}{altacv-ats}}{#1 to #2\%}{$\sim$#1--#2\%}%
+        \ifthenelse{\equal{\currentMode}{altacv-ats}}{#1\% to #2\%}{$\sim$#1--#2\%}%
     \else
-        \ifthenelse{\equal{\currentMode}{altacv-ats}}{#1 a #2\%}{$\sim$#1--#2\%}%
+        \ifthenelse{\equal{\currentMode}{altacv-ats}}{#1\% a #2\%}{$\sim$#1--#2\%}%
     \fi
 }
 
