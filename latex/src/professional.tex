@@ -1,6 +1,41 @@
 \cvsection{\multiLangString{Work Experience}{Experiência Profissional}}
 
-\cvevent{\multiLangString{Python Developer}{Desenvolvedor Python}}{Lize Edu}{\monthName{12} 2025 \betweenDates \monthName{0}}{Natal, RN, \multiLangString{Brazil}{Brasil}}
+\cvevent{\multiLangString{Data \& Analytics Developer | Python}{Desenvolvedor de Dados \& Analytics | Python}}{Lize Edu}{\monthName{12} 2025 \betweenDates \monthName{0}}{Natal, RN, \multiLangString{Brazil}{Brasil}}
+
+\cvsubevent{\multiLangString{Analytics service}{Serviço de analytics}}{}{}{}
+
+\begin{itemize}
+    \justifying
+    \checktags{data,backend}{
+        \item \multiLangString{
+            Led migration from a legacy \cvsearchtag{Parquet} export pipeline to \cvsearchtag{ClickHouse} over \cvsearchtag{PostgreSQL}-backed operational data: \cvsearchtag{SQL} materialized views with dynamic refresh in \cvsearchtag{ClickHouse}, \cvsearchtag{Ibis} on a \cvsearchtag{Flask} API, and view synchronization through a \cvsearchtag{Kubernetes} job, guided by \cvsearchtag{OpenSpec} and validated for parity (\cvsearchtag{pytest}, \cvsearchtag{Ruff}, \cvsearchtag{ty}).
+            }{
+            Conduzi a migração de um pipeline legado de exportação \cvsearchtag{Parquet} para \cvsearchtag{ClickHouse} sobre dados operacionais em \cvsearchtag{PostgreSQL}: views materializadas em \cvsearchtag{SQL} com atualização dinâmica no \cvsearchtag{ClickHouse}, \cvsearchtag{Ibis} em API \cvsearchtag{Flask} e sincronização de views por job em \cvsearchtag{Kubernetes}, conduzida com \cvsearchtag{OpenSpec} e validada em paridade (\cvsearchtag{pytest}, \cvsearchtag{Ruff}, \cvsearchtag{ty}).
+        }\par%
+    }
+\end{itemize}
+
+\ifthenelse{\equal{\currentMode}{altacv}}{\medskip}{}
+
+\cvsubevent{\multiLangString{Integrations \& tooling}{Integrações e ferramentas}}{}{}{}
+
+\begin{itemize}
+    \justifying
+    \checktags{backend}{
+        \item \multiLangString{
+            Contributed to \cvsearchtag{MCP} access for external agents: OAuth-based authentication, \cvsearchtag{Redis}-backed sessions, access controls integrated with the \cvsearchtag{Django} core app, and aligned listing contracts across services (\cvsearchtag{Sentry} in production).
+            }{
+            Contribuí para o acesso \cvsearchtag{MCP} a agentes externos: autenticação OAuth, sessões em \cvsearchtag{Redis}, controles de acesso integrados à aplicação principal em \cvsearchtag{Django} e contratos de listagens alinhados entre os serviços (\cvsearchtag{Sentry} em produção).
+        }\par%
+    }
+    \checktags{infra,backend}{
+        \item \multiLangString{
+            Standardized local and CI workflows with \cvsearchtag{Docker} multistage images, unified test containers, and \cvsearchtag{GitHub Actions}.
+            }{
+            Padronizei fluxos locais e de CI com imagens \cvsearchtag{Docker} multistage, containers de teste unificados e \cvsearchtag{GitHub Actions}.
+        }\par%
+    }
+\end{itemize}
 
 \divider
 
