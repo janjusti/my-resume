@@ -111,9 +111,18 @@
 
 \newcommand{\cvskillblock}[1]{%
     \begin{justify}%
-    \noindent
+    \noindent\ignorespaces
     #1%
     \end{justify}%
+}
+
+\newcommand{\cvproseblock}[1]{%
+    \begingroup
+    \setlength{\parindent}{0pt}%
+    \justifying
+    \noindent\ignorespaces
+    #1\par
+    \endgroup
 }
 
 % Tighter gap between skill subsection title and list (cvsubsection ends with \medskip).
