@@ -111,19 +111,12 @@
 }
 
 \newcommand{\cvskillblock}[1]{%
-    \ifthenelse{\equal{\currentMode}{altacv}}{%
-        \begingroup
-        \setlength{\parindent}{0pt}%
-        \justifying
-        \noindent\ignorespaces
-        #1\par
-        \endgroup
-    }{%
-        \begin{justify}%
-        \noindent\ignorespaces
-        #1%
-        \end{justify}%
-    }%
+    \begingroup
+    \setlength{\parindent}{0pt}%
+    \justifying
+    \noindent\ignorespaces
+    #1\par
+    \endgroup
 }
 
 \newcommand{\cvproseblock}[1]{%
@@ -141,7 +134,11 @@
     \ifthenelse{\equal{\currentMode}{altacv}}{%
         \vspace{\dimexpr-\medskipamount+0.05\baselineskip\relax}%
     }{%
-        \vspace{\dimexpr-\medskipamount+0.25\baselineskip\relax}%
+        \ifnum\currentLang=1
+            \vspace{\dimexpr-\medskipamount+0.05\baselineskip\relax}%
+        \else
+            \vspace{\dimexpr-\medskipamount+0.25\baselineskip\relax}%
+        \fi
     }%
 }
 
