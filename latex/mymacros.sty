@@ -67,6 +67,32 @@
     - %
 }
 
+% ATS: plain words (no ~ / x); altacv: math symbols.
+\newcommand{\cvscale}[1]{%
+    \ifnum\currentLang=0
+        \ifthenelse{\equal{\currentMode}{altacv-ats}}{#1 times}{$\sim$#1$\times$}%
+    \else
+        \ifthenelse{\equal{\currentMode}{altacv-ats}}{#1 vezes}{$\sim$#1$\times$}%
+    \fi
+}
+\newcommand{\cvapproxpct}[1]{%
+    \ifthenelse{\equal{\currentMode}{altacv-ats}}{#1\%}{$\sim$#1\%}%
+}
+\newcommand{\cvarrow}{%
+    \ifnum\currentLang=0
+        \ifthenelse{\equal{\currentMode}{altacv-ats}}{ to }{ $\rightarrow$ }%
+    \else
+        \ifthenelse{\equal{\currentMode}{altacv-ats}}{ para }{ $\rightarrow$ }%
+    \fi
+}
+\newcommand{\cvcpuSpikeRange}[2]{%
+    \ifnum\currentLang=0
+        \ifthenelse{\equal{\currentMode}{altacv-ats}}{#1 to #2\%}{$\sim$#1--#2\%}%
+    \else
+        \ifthenelse{\equal{\currentMode}{altacv-ats}}{#1 a #2\%}{$\sim$#1--#2\%}%
+    \fi
+}
+
 \newcommand{\smallObsv}[2]{%
     \ifthenelse{\equal{\currentMode}{altacv}}{%
         #1 {\small(#2)}%

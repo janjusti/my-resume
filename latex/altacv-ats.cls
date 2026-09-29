@@ -290,17 +290,21 @@
 \newcommand{\makecvheader}{%
     \begingroup
         \namefont{\@name}\par
+        \medskip
+        \taglinefont{\@tagline}\par
     \endgroup
     \medskip
     \begingroup
-        \textbf{Email:} 
+        \textbf{Email:}
         \personalinfoemail \\
         \textbf{\multiLangString{Phone}{Telefone}:}
         \personalinfophone \\
         \textbf{\multiLangString{Location}{Localização}:}
         \personalinfolocation \\
-        \textbf{LinkedIn:} 
+        \textbf{LinkedIn:}
         https://linkedin.com/in/\personalinfolinkedin \\
+        \textbf{GitHub:}
+        https://github.com/\personalinfogithub \\
     \endgroup
 }
 
@@ -352,6 +356,11 @@
     {\cveventLowerFont#1} \\
     \smallskip%
     {\cveventPeriodFont#3}%
+    \ifstrequal{#4}{}{}{%
+        \\
+        \smallskip%
+        {\cveventPeriodFont#4}%
+    }%
     \medskip%
     \par\normalsize%
     \cvEventAfterHeader
@@ -368,7 +377,10 @@
 %   #1
 % }
 \newcommand{\cvsubevent}[4]{%
-    % ATS: sub-role headers omitted; bullets stay under parent \cvevent.
+    \smallskip%
+    {\cveventLowerFont#1\par}%
+    \ifstrequal{#3}{}{}{{\cveventPeriodFont#3\par}}%
+    \smallskip%
 }
 
 
