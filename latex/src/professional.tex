@@ -8,9 +8,16 @@
     \justifying
     \checktags{data,backend}{
         \item \multiLangString{
-            Led migration from a legacy \cvsearchtag{Parquet} export pipeline to \cvsearchtag{ClickHouse} over \cvsearchtag{PostgreSQL}-backed operational data: \cvsearchtag{SQL} materialized views with dynamic refresh in \cvsearchtag{ClickHouse}, \cvsearchtag{Ibis} on a \cvsearchtag{Flask} API, and view synchronization through a \cvsearchtag{Kubernetes} job, guided by \cvsearchtag{OpenSpec} and validated for parity (\cvsearchtag{pytest}, \cvsearchtag{Ruff}, \cvsearchtag{ty}).
+            Led migration of 30+ production analytics API endpoints from batch \cvsearchtag{Parquet} exports and in-memory processing to \cvsearchtag{ClickHouse} over \cvsearchtag{PostgreSQL}-backed operational data, replacing long ETL windows with \cvsearchtag{SQL} materialized views, \cvsearchtag{Ibis} on a \cvsearchtag{Flask} API, and view synchronization through a \cvsearchtag{Kubernetes} job, guided by \cvsearchtag{OpenSpec} and validated for parity (\cvsearchtag{pytest}, \cvsearchtag{Ruff}, \cvsearchtag{ty}).
             }{
-            Conduzi a migração de um pipeline legado de exportação \cvsearchtag{Parquet} para \cvsearchtag{ClickHouse} sobre dados operacionais em \cvsearchtag{PostgreSQL}: views materializadas em \cvsearchtag{SQL} com atualização dinâmica no \cvsearchtag{ClickHouse}, \cvsearchtag{Ibis} em API \cvsearchtag{Flask} e sincronização de views por job em \cvsearchtag{Kubernetes}, conduzida com \cvsearchtag{OpenSpec} e validada em paridade (\cvsearchtag{pytest}, \cvsearchtag{Ruff}, \cvsearchtag{ty}).
+            Conduzi a migração de mais de 30 endpoints de API de analytics em produção, de exportações batch em \cvsearchtag{Parquet} e processamento em memória para \cvsearchtag{ClickHouse} sobre dados operacionais em \cvsearchtag{PostgreSQL}, substituindo janelas longas de ETL por views materializadas em \cvsearchtag{SQL}, \cvsearchtag{Ibis} em API \cvsearchtag{Flask} e sincronização de views por job em \cvsearchtag{Kubernetes}, conduzida com \cvsearchtag{OpenSpec} e validada em paridade (\cvsearchtag{pytest}, \cvsearchtag{Ruff}, \cvsearchtag{ty}).
+        }\par%
+    }
+    \checktags{data,backend,impact}{
+        \item \multiLangString{
+            Delivered $\sim$10$\times$ lower hot-query latency, $\sim$12$\times$ lower repeat API CPU in load tests ($\sim$500\% $\rightarrow$ $\sim$40\%), and eliminated $\sim$200--500\% CPU spikes on operational \cvsearchtag{PostgreSQL} from the legacy batch-\cvsearchtag{Parquet} export pipeline.
+            }{
+            Entreguei latência $\sim$10$\times$ menor em consultas críticas, CPU da API $\sim$12$\times$ menor em chamadas repetidas em testes de carga ($\sim$500\% $\rightarrow$ $\sim$40\%) e eliminei picos de $\sim$200--500\% de CPU no \cvsearchtag{PostgreSQL} operacional causados pelas exportações batch do pipeline antigo.
         }\par%
     }
 \end{itemize}
